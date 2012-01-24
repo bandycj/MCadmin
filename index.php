@@ -8,72 +8,9 @@ echo "test";
 
 ?>
 <head>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-<link rel=StyleSheet href="style.css" type="text/css"></link>
-<script type="text/javascript">
-$(document).ready(function(){
-        $("#login_a").click(function(){
-                $("#shadow").fadeIn("normal");
-                $("#login_form").fadeIn("normal");
-                $("#user_name").focus();
-        });
-        $("#login_a").click(function(){
-                $("#shadow").fadeIn("normal");
-                $("#login_form").fadeIn("normal");
-                $("#user_name").focus();
-        });
-        $("#cancel_hide").click(function(){
-            $("#login_form").fadeOut("normal");
-            $("#shadow").fadeOut();
-        });
-        $("#login").click(function(){
-            username=$("#user_name").val();
-            password=$("#password").val();
-            $.ajax({
-            type: "POST",
-            url: "login.php",
-            data: "name="+username+"&pwd="+password,
-            success: function(html){
-                if(html=='true'){
-                    $("#login_form").fadeOut("normal");
-                    $("#shadow").fadeOut();
-                    $("#profile").html("<a href='logout.php' id='logout'>Logout</a>");
-                } else {
-                    $("#add_err").html("Wrong username or password");
-                }
-            },
-            beforeSend:function(){
-                $("#add_err").html("Loading...");
-            }
-            });
-            return false;
-        });
-        $("#login").click(function(){
-            username=$("#user_name").val();
-            password=$("#password").val();
-            $.ajax({
-                type: "POST",
-                    url: "login.php",
-                    data: "name="+username+"&pwd="+password,
-                    success: function(html){
-                        if(html=='true'){
-                            $("#login_form").fadeOut("normal");
-                            $("#shadow").fadeOut();
-                            $("#profile").html("<a href='logout.php' id='logout'>Logout</a>");
-                        } else {
-                            $("#add_err").html("Wrong username or password");
-                        }
-                    },
-                    beforeSend:function(){
-                        $("#add_err").html("Loading...");
-                    }
-            });
-            return false;
-        });
-});
-</script>
-
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="index.js" type="text/javascript"></script>
+    <link rel=StyleSheet href="style.css" type="text/css"></link>
 </head>
 <body>
     <?php session_start(); ?>
@@ -82,7 +19,7 @@ $(document).ready(function(){
             <a href='logout.php' id='logout'>Logout</a>
         <?php }else {?>
         <a id="login_a" href="#">login</a>
-        <a id="register" href="#">register</a>
+        <a id="register_a" href="#">register</a>
         <?php } ?>
     </div>
     <div id="login_form">
